@@ -1,5 +1,6 @@
 package rentaco;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /** Représenter une location
@@ -167,6 +168,27 @@ public class Location {
 	 */
 	public void setClient(Client client) {
 		this.client = client;
+	}
+	/** Obtenir l'heure d'enregistrement de la location
+	 * 
+	 * @return L'heure d'enregistrement de la location
+	 */
+	public int getHeureEnreg() {
+		int heure = dateEnreg.get(Calendar.HOUR);
+		if(this.dateEnreg.get(Calendar.AM_PM) == Calendar.AM){
+			return heure;
+		}
+		else{
+			return heure + 12;
+		}
+	}
+
+	/** Obtenir les minutes d'enregistrement de la location
+	 * 
+	 * @return Les minutes d'enregistrement de la location
+	 */
+	public int getMinuteEnreg() {
+		return dateEnreg.get(Calendar.MINUTE);
 	}
 	
 	/** Indique si la location est en attente
